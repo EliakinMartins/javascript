@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vamos Contar !</title>
+</head>
+<body>
+    <header>
+        <h1>Vamos Contar !</h1>
+    </header>
+    <section>
+        <div>
+            Quero contar de:    <input type="number" name="contar" id="inicio">
+                                <label for=""></label>
+            até:                <input type="number" name="" id="fim">
+                                <label for=""></label>
+            pulando             <input type="number" name="" id="incremento"> casas.
+                                <label for=""></label>
+        </div>
+        <div>
+            <input type="button" value="CONTAR" id="btn">
+            <br>
+            <p id="res">???</p> 
+        </div>
+    </section>
+    <footer>
+        &copy;Eliakin
+    </footer>
+
+    <script>
+        const iniCont   = document.querySelector("#inicio");
+        const fimCont   = document.querySelector("#fim");
+        const contMais  = document.querySelector("#incremento");
+        const btn       = document.querySelector("#btn");
+        const res       = document.querySelector("#res");
+
+        function contar(){
+
+            let inicio      = Number(iniCont.value);
+            let fim         = Number(fimCont.value);
+            let incremento  = Number(contMais.value);
+        
+            for(inicio; inicio <= fim; inicio += incremento ) {
+                if(inicio == 0 || inicio == null && incremento == 0 || incremento == null) {
+                    alert("ERRO!!! Adicionamos '1' ao contador!!!");
+                    inicio = 1
+                    incremento = 1
+                    document.write(`${inicio}, `)
+                } else 
+                    document.write(`${inicio}, `)
+                
+            }
+        }
+
+        btn.addEventListener('click',contar);
+    </script>
+</body>
+</html>

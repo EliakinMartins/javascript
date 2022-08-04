@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+</head>
+<body>
+    <header>
+        <h1>TABUADAS</h1>
+    </header>
+
+    <section>
+        <div>
+            Qual a tabuada desejada:
+            <input type="number" name="tabuada" id="cxTab">
+            <input type="button" value="OK" id="btn">
+        </div>
+            
+        <div>
+            <p id="tabuada"></p>
+            <br>
+            <p id="showTab"></p>
+
+        </div>  
+    </section>
+
+    <footer>
+        &copy;Eliakin
+    </footer>
+
+    <script>
+        const cxTab     = document.querySelector("#cxTab");
+        const btn       = document.querySelector("#btn");
+        const p1        = document.querySelector("#tabuada");
+        
+        let c           = 0;
+        
+        function mult() {
+            let tab = Number(cxTab.value);
+            p1.textContent=`Esse é o resultado da tabuada do: ${tab}`;
+            
+            for (c; c <= 10; c++) {
+                
+                let res = c * tab;
+                document.write(`${tab} X ${c} = ${res} <br>`);
+            };
+        };
+
+        btn.addEventListener('click', mult);
+        
+    </script>
+</body>
+</html>

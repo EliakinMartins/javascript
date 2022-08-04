@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velhomêtro</title>
+</head>
+<body>
+    <header>
+        <h1>VELHOMÊTRO</h1>
+    </header>
+
+    <section>
+        <div>
+            <p>Qual é o ano do seu nascimento?</p>
+            <input type="text" maxlength="4" name="" id="txtNasc">
+            <br>
+            <br>
+            <p>Você é do sexo:</p>
+            <input id="masc" type="radio" name="sexo" value="masculino">Masculino
+            <br>
+            <input id="fem" type="radio" name="sexo" value="feminino">Feminino
+            <br>
+            <br>
+            <input id="btn" type="button" value="PRONTO">
+        </div>
+
+        <div>
+            <p id="pMsg">mensagem...</p>
+            <img id="foto" src="img/jf.jpg" alt="">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy;Eliakin</p>
+    </footer>
+
+    <script>
+        const ano = new Date();
+
+        const txtNasc   = document.querySelector("input#txtNasc");
+        const foto      = document.querySelector("img#foto");
+        const msg       = document.querySelector("p#pMsg");
+        const btn       = document.querySelector("input#btn");
+
+        let dataAtual = ano.getFullYear();
+        
+        foto.src = " ";
+        
+        btn.addEventListener("click", function() { 
+
+            let idade    = calc(dataAtual, Number(txtNasc.value));
+            var sexo     = document.querySelector("input[name=sexo]:checked");
+            var genero   = sexo.value
+
+                if ( idade >= 0 && idade <= 5 && genero == "masculino" ) {
+                    msg.textContent = `Você é um bebezinho de ${calc(dataAtual, Number(txtNasc.value))} anos.`
+                    foto.src = "img/bbm.jpg"
+                
+                }else if (idade >= 0 && idade <= 5 && genero == "feminino") {
+                    msg.textContent = `Você é uma bebezinha de ${calc(dataAtual, Number(txtNasc.value))} anos.`
+                    foto.src = "img/bbf.jpg"
+
+                } else if (idade >= 6 && idade < 12 && genero == "masculino") {
+                    msg.textContent = `Você é um menino de ${calc(dataAtual, Number(txtNasc.value))} anos.`
+                    foto.src = "img/cm.jpg"
+
+                } else if (idade >= 6 && idade < 12 && genero == "feminino") {
+                    msg.textContent = `Você é uma menina de ${calc(dataAtual, Number(txtNasc.value))} anos.`
+                    foto.src = "img/cf.jpg"
+
+                } else if (idade >= 12 && idade < 18 && genero == "masculino") {
+                    msg.textContent = `Você é um adolescente de ${calc(dataAtual, Number(txtNasc.value))} anos.`
+                    foto.src = "img/adlm.jpg"
+
+                } else if (idade >= 12 && idade < 18 && genero == "feminino") {
+                    msg.textContent = `Você é uma adolescente de ${calc(dataAtual, Number(txtNasc.value))} anos.`
+                    foto.src = "img/adlf.jpg"
+
+                } else if (idade >= 18 && idade < 30 && genero == "masculino") {
+                    msg.textContent = `Você é um jovem homem de ${calc(dataAtual, Number(txtNasc.value))} anos.`
+                    foto.src = "img/jm.jpg"
+
+                } else if (idade >= 18 && idade < 30 && genero == "feminino") {
+                    msg.textContent = `Você é uma jovem mulher de ${calc(dataAtual, Number(txtNasc.value))} anos.`
+                    foto.src = "img/jf.jpg"
+
+                } else if (idade >= 30 && idade < 46 && genero == "masculino") {
+                    msg.textContent = `Você é um homem de ${calc(dataAtual, Number(txtNasc.value))} anos.`
+                    foto.src = "img/h.jpg"
+
+                } else if (idade >= 30 && idade < 46 && genero == "feminino") {
+                    msg.textContent = `Você é uma mulher de ${calc(dataAtual, Number(txtNasc.value))} anos.`
+                    foto.src = "img/m.jpg"
+
+                } else if (idade >= 46 && idade < 60 && genero == "masculino") {
+                    msg.textContent = `Você é um homem maduro (Coroa) de ${calc(dataAtual, Number(txtNasc.value))} anos.`
+                    foto.src = "img/mm.jpg"
+
+                } else if (idade >= 46 && idade < 60 && genero == "feminino") {
+                    msg.textContent = `Você é uma mulher madura (Coroa) de ${calc(dataAtual, Number(txtNasc.value))} anos.`
+                    foto.src = "img/mf.jpg"
+
+                } else if (idade >= 60 && idade < 106 && genero == "masculino") {
+                    msg.textContent = `Você é um idoso de ${calc(dataAtual, Number(txtNasc.value))} anos.`
+                    foto.src = "img/im.jpg"
+
+                } else if (idade >= 60 && idade < 106 && genero == "feminino") {
+                    msg.textContent = `Você é uma idosa de ${calc(dataAtual, Number(txtNasc.value))} anos.`
+                    foto.src = "img/if.jpg"
+
+                } else if (idade >= 106 && idade <= 999999 ) {
+                    msg.textContent = `Você tem ${calc(dataAtual, Number(txtNasc.value))} anos. Provalmente passou dessa pra melhor!!!!`
+                    foto.src = "img/caixao.jpg"
+
+                } else {
+                    msg.textContent = `Você ainda não nasceu. Provavelmente ainda seja uma sementinha !`
+                    foto.src = "img/sementes.jpg"
+                }
+
+        function calc(ter1, ter2) {
+            return ter1 - ter2;
+        }
+        });
+
+    </script>
+</body>
+</html>

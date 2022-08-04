@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador de números</title>
+</head>
+<body>
+
+    <header>
+        <h1>Analizador de números</h1>
+    </header>
+   
+    <section>
+
+        <div>
+            <p>Adicione um número de 0 a 100: </p>
+            <input id="inpNum" type="number">
+            <input id="btnAdd" type="button" value="Adicionar">
+        </div>
+
+        <br>
+
+        <div>
+            <select multiple name="" id="select" size="10"></select>
+            <br>    
+            <br>
+            <input id="finalizar" type="button" value="Finalizar">
+           
+            <p id="qtdNum"></p>
+            <p id="maior"></p>
+            <p id="menor"></p>
+            <p id="soma"></p>
+            <p id="media"></p>
+        </div>
+    
+    </section>
+   
+    <br>
+
+
+    <footer>
+        &copy;Eliakin
+    </footer>
+
+<script>
+
+    const inpNum = document.querySelector("#inpNum");
+    const btnAdd = document.querySelector("#btnAdd");
+    const select = document.querySelector("#select");
+   
+
+    let numeros = [];
+
+    btnAdd.addEventListener('click', function (){
+        let numeroDigitado = Number(inpNum.value);
+        
+        if (numeroDigitado < 0 || numeroDigitado > 100) 
+            return window.alert("Ops!!! Os números devem ser apenas de 0 a 100."); //Return é como se fosse um Break.
+        
+        if (numeros.includes(numeroDigitado) == true) 
+            return window.alert("Ops!!! Número já adicionado, tente outro!"); 
+        
+        numeros.push(numeroDigitado);
+
+        let op = document.createElement("option");
+        op.textContent=(`Adicionado: ${numeroDigitado}`);
+        select.appendChild(op);
+
+        inpNum.value = " ";
+        inpNum.focus();
+    })
+    
+    
+    
+    const btnFim    = document.querySelector("#finalizar");
+    const qtdNum    = document.querySelector("#qtdNum");
+    const maior     = document.querySelector("#maior");
+    const menor     = document.querySelector("#menor");
+    const soma      = document.querySelector("#soma");
+    const media     = document.querySelector("#media");
+
+   
+
+    btnFim.addEventListener("click", function() {
+
+        if (numeros.length == 0)
+        return window.alert("Ops!!! Você não digitou nenhum número.");
+
+
+        let numeroDigitado = Number(inpNum.value);
+        qtdNum.textContent=(`Total de números adicionados: ${numeros.length}`);
+
+
+        // ABAIXO USAMOS UMA ARROW FUNCTION ou FUNÇÂO EM SETA
+        const maxValue = numeros.reduce((previous, current) => previous > current ? previous : current);
+
+        maior.textContent=(`Maior número adicionado: ${maxValue}`);
+        
+
+        // AQUI ACONTECE MESMA LÓGICA DE CIMA
+        const minValue = numeros.reduce(function (previous, current) {
+            if (previous < current)
+                return previous;
+            
+            return current;
+        });
+        menor.textContent=(`Menor número adicionado: ${minValue}`);
+
+        const sum = numeros.reduce(function (previous, current) {
+            return previous + current;
+        })
+        soma.textContent=(`A soma do total de números adicionados: ${sum}`);
+
+        media.textContent=(`A média do total de números adicionados: ${sum / numeros.length}`)
+    })
+
+</script>
+
+</body>
+</html>
